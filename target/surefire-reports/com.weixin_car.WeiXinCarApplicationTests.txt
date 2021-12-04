@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: com.weixin_car.WeiXinCarApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 3.373 s <<< FAILURE! - in com.weixin_car.WeiXinCarApplicationTests
+contextLoads  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'serverEndpointExporter' defined in class path resource [com/weixin_car/config/WedSocketConfig.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: javax.websocket.server.ServerContainer not available
+Caused by: java.lang.IllegalStateException: javax.websocket.server.ServerContainer not available
+
