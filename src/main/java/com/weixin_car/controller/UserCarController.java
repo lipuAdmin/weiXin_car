@@ -6,12 +6,9 @@ import com.weixin_car.pojo.UserCar;
 import com.weixin_car.service.IUserCarService;
 import com.weixin_car.service.WebSocketService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.websocket.Session;
 import java.util.HashMap;
@@ -91,6 +88,17 @@ public class UserCarController {
         iUserCarService.closeMsg(jsonParam.getString("carNum"));
         resultMap.put("msg", "成功");
         return resultMap;
+    }
+    @GetMapping("/send")
+    public Map<String,Object> send(String carNum,Double limitHeight,Double carHeight){
+        String msg="";
+        if(carHeight>limitHeight) msg="前方限高杆高度为"+limitHeight+"您的车高为"+carHeight+"无法通过请绕行";
+        else msg="前方限高杆高度为"+limitHeight+"您的车高为"+carHeight+"可以安全通过";
+        return webSocketService.sendMessage(msg, carNum);
+    }
+    @RequestMapping("/testMsg")
+    public Map<String,Object> testMsg(String msg,String carNum){
+        return webSocketService.sendMessage(msg, carNum);
     }
 }
 

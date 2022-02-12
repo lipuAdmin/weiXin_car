@@ -15,6 +15,7 @@
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
+        <docker.image.prefix>lihewei</docker.image.prefix>
     </properties>
     <dependencies>
         <dependency>
@@ -82,6 +83,50 @@
                     </excludes>
                 </configuration>
             </plugin>
+<!--            <plugin>-->
+<!--                <groupId>com.spotify</groupId>-->
+<!--                <artifactId>docker-maven-plugin</artifactId>-->
+<!--                <version>1.0.0</version>-->
+<!--                <configuration>-->
+<!--                    &lt;!&ndash; 镜像名称 guoweixin/exam&ndash;&gt;-->
+<!--                    <imageName>${docker.image.prefix}/weixin_car</imageName>-->
+<!--                    &lt;!&ndash;指定标签&ndash;&gt;-->
+<!--                    <imageTags>-->
+<!--                        <imageTag>latest</imageTag>-->
+<!--                    </imageTags>-->
+<!--                    &lt;!&ndash; 基础镜像jdk 1.8&ndash;&gt;-->
+<!--                    <baseImage>java</baseImage>-->
+<!--                    &lt;!&ndash; 制作者提供本人信息 &ndash;&gt;-->
+<!--                    <maintainer>lihewei 3234501438@qq.com</maintainer>-->
+<!--                    &lt;!&ndash;切换到/www/wwwroot/default目录 &ndash;&gt;-->
+<!--                    <workdir>/www/wwwroot/default</workdir>-->
+<!--                    <cmd>["java", "-version"]</cmd>-->
+<!--                    <entryPoint>["java", "-jar", "${project.build.finalName}.jar"]</entryPoint>-->
+<!--                    <dockerHost>https://8.142.40.213:2375</dockerHost>-->
+<!--                    <dockerCertPath>D:\docker\ca</dockerCertPath>-->
+<!--                    &lt;!&ndash; 这里是复制 jar 包到 docker 容器指定目录配置 &ndash;&gt;-->
+<!--                    <resources>-->
+<!--                        <resource>-->
+<!--                            <targetPath>/www/wwwroot/default</targetPath>-->
+<!--                            &lt;!&ndash;用于指定需要复制的根目录，${project.build.directory}表示target目录&ndash;&gt;-->
+<!--                            <directory>${project.build.directory}</directory>-->
+<!--                            &lt;!&ndash;用于指定需要复制的文件。${project.build.finalName}.jar指的是打包后的jar-->
+<!--                            包文件。&ndash;&gt;-->
+<!--                            <include>${project.build.finalName}.jar</include>-->
+<!--                        </resource>-->
+<!--                    </resources>-->
+<!--                </configuration>-->
+<!--                &lt;!&ndash;当执行mvn package 时，执行： mvn clean package docker:build &ndash;&gt;-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>build-image</id>-->
+<!--                        <phase>package</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>build</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 

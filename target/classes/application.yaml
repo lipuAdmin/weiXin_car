@@ -2,8 +2,12 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://8.142.40.213:3306/weixin_car?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://sh-cynosdbmysql-grp-df0mvuf2.sql.tencentcdb.com:23132/weixin_car?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
     username: root
     password: Abc20020217!
 server:
-  port: 8014
+  port: 8080
+#  ssl:
+#    key-store: classpath:liadmin.pfx
+#    key-store-password: d349d3Y7
+#    key-store-type: pkcs12
