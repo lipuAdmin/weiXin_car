@@ -9,11 +9,11 @@ WORKDIR /app
 COPY src /app/src
 
 # 将pom.xml文件，拷贝到工作目录下
-COPY settings.xml pom.xml /app/
+COPY pom.xml /app/
 
 # 执行代码编译命令
 # 自定义settings.xml, 选用国内镜像源以提高下载速度
-RUN mvn -s /app/settings.xml -f /app/pom.xml clean package
+RUN mvn  -f /app/pom.xml clean package
 
 # 选择运行时基础镜像
 FROM alpine:3.13
@@ -31,7 +31,7 @@ WORKDIR /app
 COPY --from=build /app/target/springboot-wxcloudrun-1.0.jar .
 
 # 暴露端口
-EXPOSE 80
+EXPOSE 8080
 
 # 执行启动命令
 CMD ["java", "-jar", "/app/springboot-wxcloudrun-1.0.jar"]
